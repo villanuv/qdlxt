@@ -11,6 +11,8 @@
 
 <h2>Products</h2>
 
+<p>API KEY, FOR TESTING: <%= ShopifyApp.configuration.api_key %></p>
+
 <ul>
   <% @products.each do |product| %>
     <li><%= link_to product.title, "https://#{@shop_session.url}/admin/products/#{product.id}", target: "_top" %></li>
