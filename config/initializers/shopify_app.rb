@@ -3,4 +3,7 @@ ShopifyApp.configure do |config|
   config.secret = "7af68a2c551f6e971be214b0ed7ba5a6"
   config.scope = "read_orders, read_products"
   config.embedded_app = true
+  config.webhooks = [
+    {topic: 'products/update', address: 'http://shopify-rails-test.herokuapp.com/webhooks/products_update', format: 'json'},
+  ]
 end
