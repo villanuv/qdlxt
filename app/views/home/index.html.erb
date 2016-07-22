@@ -16,7 +16,7 @@
 <ul>
   <% @products.each do |product| %>
     <li><%= link_to product.title, "https://#{@shop_session.url}/admin/products/#{product.id}", target: "_top" %>
-      <div>Lighting Closeouts <input type="checkbox" value="true" /><button>Edit</button> <a href="#">Cancel</a></div>
+      <div class="product-options">Lighting Closeouts <input type="checkbox" value="lc" /> Lights4Less4u <input type="checkbox" value="l4l4u" /> <button>Edit</button></div>
     </li>
   <% end %>
 </ul>
