@@ -15,8 +15,8 @@
 
 <ul>
   <% @products.each do |product| %>
-    <li><a href="#" target="_top" onclick="getProductInfo('<%= product.id %>');"><%= product.title %></a>
-      <div class="product-options">id: <%= product.id %> Lighting Closeouts <input type="checkbox" value="lc" /> Lights4Less4u <input type="checkbox" value="l4l4u" /> <button>Edit</button></div>
+    <li><a href="#" target="_top"><%= product.title %></a>
+      <div class="product-options">id: <%= product.id %> Lighting Closeouts <input type="checkbox" id="<%= product.id %>-lc" value="lc" /> Lights4Less4u <input type="checkbox" id="<%= product.id %>-l4l4u" value="l4l4u" /> <button onclick="getProductInfo('<%= product.id %>', $('<%= product.id %>-lc').value, $('<%= product.id %>-l4l4u').value);">Edit</button></div>
     </li>
   <% end %>
 </ul>

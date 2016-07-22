@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require_tree .
 
-function getProductInfo(productId){
-  alert(productId);
+function getProductInfo(productId, val1, val2){
+  var prodString = productId + val1 + val2;
+  alert(prodString);
 }
