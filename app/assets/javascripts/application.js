@@ -14,7 +14,9 @@
 //= require jquery_ujs
 //= require_tree .
 
-function getProductInfo(productId, val1, val2){
-  var prodString = productId + val1 + val2;
+function getProductInfo(productId){
+  var lcTag = $(productId + '-lc').value;
+  var l4l4uTag = $(productId + '-l4l4u').value;
+  var prodString = productId + ' ' + lcTag + ' ' + l4l4uTag;
   alert(prodString);
 }
