@@ -15,8 +15,8 @@
 //= require_tree .
 
 function getProductInfo(productId){
-  var lcTag = $('#' + productId + '-lc').value;
-  var l4l4uTag = $('#' + productId + '-l4l4u').value;
+  var lcTag = $('#' + productId + '-lc').val();
+  var l4l4uTag = $('#' + productId + '-l4l4u').val();
   var prodString = productId + ' ' + lcTag + ' ' + l4l4uTag;
   alert(prodString);
 }
