@@ -15,8 +15,16 @@
 //= require_tree .
 
 function getProductInfo(productId){
-  var lcTag = $('#' + productId + '-lc').val();
-  var l4l4uTag = $('#' + productId + '-l4l4u').val();
+  if ($('#' + productId + '-lc').is(":checked")) {
+    var lcTag = true;
+  } else {
+    var lcTag = false;
+  }
+  if ($('#' + productId + '-l4l4u').is(":checked")) {
+    var l4l4uTag = true;
+  } else {
+    var l4l4uTag = false;
+  }
   var prodString = productId + ' ' + lcTag + ' ' + l4l4uTag;
   alert(prodString);
-}
+}    
