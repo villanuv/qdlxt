@@ -14,6 +14,6 @@
 //= require jquery_ujs
 //= require_tree .
 
-function getProductInfo(productObj){
-  console.log(productObj.title);
+function getProductInfo(productId){
+  alert(productId);
 }
