@@ -32,5 +32,18 @@ function getProductInfo(productId, productTags){
       "tags": productTags + ', lc__' + lcTag + ', l4l4u__' + l4l4uTag
     }
   };
-  alert(JSON.stringify(prodJson, null, 4));
+  $.ajax({
+      url: "/webhooks/" + productId + ".json",
+      type: "PUT",
+      data: JSON.stringify(prodJson),
+      contentType: "application/json",
+      complete: callback
+  })
+  .done(function(){
+    alert(JSON.stringify(prodJson, null, 4));
+  })
+  .fail(function(){
+    alert("error");
+  });
+
 }    
