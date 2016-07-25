@@ -33,7 +33,7 @@ function getProductInfo(productId, productTags){
     }
   };
   $.ajax({
-      url: "/webhooks/" + productId + ".json",
+      url: "/webhooks/products_update",
       type: "POST",
       data: JSON.stringify(prodJson),
       contentType: "application/json"
