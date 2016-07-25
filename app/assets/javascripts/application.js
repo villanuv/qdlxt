@@ -14,7 +14,7 @@
 //= require jquery_ujs
 //= require_tree .
 
-function getProductInfo(productId){
+function getProductInfo(productId, productTags){
   if ($('#' + productId + '-lc').is(":checked")) {
     var lcTag = true;
   } else {
@@ -26,5 +26,11 @@ function getProductInfo(productId){
     var l4l4uTag = false;
   }
   var prodString = productId + ' ' + lcTag + ' ' + l4l4uTag;
-  alert(prodString);
+  var prodJson = { 
+    "product": {
+      "id": productId,
+      "tags": productTags + lcTag + l4l4uTag
+    }
+  };
+  alert(prodJson);
 }    
