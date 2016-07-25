@@ -36,8 +36,7 @@ function getProductInfo(productId, productTags){
       url: "/webhooks/" + productId + ".json",
       type: "PUT",
       data: JSON.stringify(prodJson),
-      contentType: "application/json",
-      complete: callback
+      contentType: "application/json"
   })
   .done(function(){
     alert(JSON.stringify(prodJson, null, 4));
