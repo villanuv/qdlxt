@@ -33,7 +33,7 @@ function getProductInfo(productId, productTags){
     }
   };
   $.ajax({
-      url: "/webhooks/products_update",
+      url: "https://qdldev.myshopify.com/admin/products/" + productId + ".json",
       type: "PUT",
       data: JSON.stringify(prodJson),
       contentType: "application/json"
