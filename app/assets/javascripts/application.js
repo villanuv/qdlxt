@@ -32,5 +32,5 @@ function getProductInfo(productId, productTags){
       "tags": productTags + lcTag + l4l4uTag
     }
   };
-  alert(prodJson);
+  alert(JSON.stringify(prodJson, null, 4));
 }    
