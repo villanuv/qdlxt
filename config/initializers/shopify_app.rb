@@ -4,6 +4,6 @@ ShopifyApp.configure do |config|
   config.scope = "read_orders, read_products, update_products"
   config.embedded_app = true
   config.webhooks = [
-    {topic: 'products/update', address: 'http://shopify-rails-test.herokuapp.com/webhooks/products_update', format: 'json'},
+    {topic: 'products/update', address: 'http://shopify-rails-test.herokuapp.com/webhooks/products/update', format: 'json'},
   ]
 end
