@@ -33,7 +33,7 @@ function getProductInfo(productId, productTags){
     }
   };
   $.ajax({
-      url: "https://qdldev.myshopify.com/admin/products/" + productId + ".json",
+      url: "/admin/products/" + productId + ".json",
       type: "PUT",
       data: JSON.stringify(prodJson),
       contentType: "application/json"
