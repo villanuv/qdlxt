@@ -29,7 +29,7 @@ function getProductInfo(productId, productTags){
   var prodJson = { 
     "product": {
       "id": productId,
-      "tags": productTags + lcTag + l4l4uTag
+      "tags": productTags + ', lc__' + lcTag + ', l4l4u__' + l4l4uTag
     }
   };
   alert(JSON.stringify(prodJson, null, 4));
