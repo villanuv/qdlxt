@@ -13,10 +13,28 @@
 
 <p>API KEY, FOR TESTING: <%= ShopifyApp.configuration.api_key %></p>
 
+
 <ul>
   <% @products.each do |product| %>
     <li><a href="#" target="_top"><%= product.title %></a>
-      <div class="product-options">id: <%= product.id %> Lighting Closeouts <input type="checkbox" id="<%= product.id %>-lc" value="lc" /> Lights4Less4u <input type="checkbox" id="<%= product.id %>-l4l4u" value="l4l4u" /> <button onclick="getProductInfo('<%= product.id %>', '<%= product.tags %>');">Edit</button></div>
+    <%= render 'edit', product: product %>
     </li>
   <% end %>
 </ul>
+
+
+<%
+=begin
+%>
+<%= form_for ShopifyAPI::Product.find(408367465) do |f| %>
+  <div class="actions">
+    <table class="new-edit">
+      <tbody>
+        <tr><td><%= f.submit %>&nbsp;&nbsp;<%= link_to 'Cancel', @cat %></td></tr>
+      </tbody>
+    </table>
+  </div>
+<% end %>
+<%
+=end
+%>

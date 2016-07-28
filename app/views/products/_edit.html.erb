@@ -1,0 +1,9 @@
+<div class="product-options">
+<%= form_tag("/products/#{product.id}", controller: "products", method: "put") do %>
+  <%if product.tags.split(", ").include? 'lightingcloseouts__true' %><% lc_var = true %><% else %><% lc_var = false %><% end %>
+  <%if product.tags.split(", ").include? 'lights4less4u__true' %><% l4l4u_var = true %><% else %><% l4l4u_var = false %><% end %>
+  <%if product.tags.split(", ").include? 'qdl__false' %><% qdl_var = true %><% else %><% qdl_var = false %><% end %>
+  id: <%= product.id %> Lighting Closeouts <%= check_box_tag(:lightingcloseouts, value = lc_var, checked = lc_var) %> Lights4Less4u <%= check_box_tag(:lights4less4u, value = l4l4u_var, checked = l4l4u_var) %> Hide on QDL <%= check_box_tag(:qdl, value = qdl_var, checked = qdl_var) %>
+  <%= submit_tag("Edit Display") %>
+<% end %>
+</div>

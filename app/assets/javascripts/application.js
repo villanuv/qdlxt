@@ -14,7 +14,7 @@
 //= require jquery_ujs
 //= require_tree .
 
-function getProductInfo(productId, productTags){
+function getProductInfo(storeURL, productId, productTags){
   if ($('#' + productId + '-lc').is(":checked")) {
     var lcTag = true;
   } else {
@@ -32,11 +32,13 @@ function getProductInfo(productId, productTags){
       "tags": productTags + ', lc__' + lcTag + ', l4l4u__' + l4l4uTag
     }
   };
+  // alert(JSON.stringify(prodJson, null, 4));
+
   $.ajax({
-      url: "/admin/products/" + productId + ".json",
-      type: "PUT",
-      data: JSON.stringify(prodJson),
-      contentType: "application/json"
+    url: storeURL + "/admin/products/" productId + ".json",
+    type: "PUT",
+    data: JSON.stringify(prodJson),
+    contentType: "application/json"
   })
   .done(function(){
     alert(JSON.stringify(prodJson, null, 4));
@@ -44,5 +46,21 @@ function getProductInfo(productId, productTags){
   .fail(function(){
     alert("error");
   });
+
+
+
+
+  // $.ajax({
+  //   url: "/admin/products/" + productId + ".json",
+  //   type: "PUT",
+  //   data: JSON.stringify(prodJson),
+  //   contentType: "application/json"
+  // })
+  // .done(function(){
+  //   alert(JSON.stringify(prodJson, null, 4));
+  // })
+  // .fail(function(){
+  //   alert("error");
+  // });
 
 }    
