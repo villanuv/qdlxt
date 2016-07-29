@@ -4,11 +4,12 @@ class ProductsController < ShopifyApp::AuthenticatedController
   def index
     if params[:id]
       @products = ShopifyAPI::Product.find(:all, params: {page: params[:id], limit: 250})
+      @page_num = params[:id].to_i
     else
       @products = ShopifyAPI::Product.find(:all, params: {limit: 250})
+      @page_num = 1
     end
 
-    @page_num = params[:id].to_i
   end
 
   def edit
@@ -66,7 +67,7 @@ class ProductsController < ShopifyApp::AuthenticatedController
 
     product.save
 
-    redirect_to '/'
+    redirect_to :back
   end
 
   private
