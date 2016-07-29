@@ -2,7 +2,10 @@ Rails.application.routes.draw do
   root :to => 'products#index'
   mount ShopifyApp::Engine, at: '/'
 
+  get "/:id", to: "products#index"
+
   resources :products, only: [:index, :show, :update]
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

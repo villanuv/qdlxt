@@ -6,6 +6,7 @@
         icon: "<%= asset_path('favicon.ico') %>"
       });
     });
+
   </script>
 <% end %>
 
@@ -13,7 +14,9 @@
 
 <p>API KEY, FOR TESTING: <%= ShopifyApp.configuration.api_key %></p>
 
-
+<% if @products.count == 0 %>
+<p>There are no products on <strong>page <%= @page_num %></strong>. Try a lower number or return to the <a href="/">first page</a>.</p>
+<% else %>
 <ul>
   <% @products.each do |product| %>
     <li><a href="#" target="_top"><%= product.title %></a>
@@ -21,20 +24,6 @@
     </li>
   <% end %>
 </ul>
-
-
-<%
-=begin
-%>
-<%= form_for ShopifyAPI::Product.find(408367465) do |f| %>
-  <div class="actions">
-    <table class="new-edit">
-      <tbody>
-        <tr><td><%= f.submit %>&nbsp;&nbsp;<%= link_to 'Cancel', @cat %></td></tr>
-      </tbody>
-    </table>
-  </div>
 <% end %>
-<%
-=end
-%>
+
+<p style="font-size:24px;text-align:center;"><% if @page_num > 1 && @products.count != 0 %><a href="/<%= @page_num-1 %>"><</a><% end %><% if @products.count == 250 %> | <a href="/<%= @page_num+1 %>">></a><% end %></p>
