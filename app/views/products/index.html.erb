@@ -19,7 +19,7 @@
 <% else %>
 <ul>
   <% @products.each do |product| %>
-    <li><a href="#" target="_top"><%= product.title %></a>
+    <li>(<%= product.id %>) <a href="#" target="_top"><%= product.title %></a>
     <%= render 'edit', product: product %>
     </li>
   <% end %>

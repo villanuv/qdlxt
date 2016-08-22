@@ -24,45 +24,52 @@ class ProductsController < ShopifyApp::AuthenticatedController
     puts "Hide on QDL: #{true_or_false(params[:qdl])}"
 
     if params[:lightingcloseouts]
-      if product.tags.include? 'lightingcloseouts__hide'
-        tags_gsub(product.tags, 'lightingcloseouts__hide', 'lightingcloseouts__show')
-      else
-        product.tags = product.tags + ', lightingcloseouts__show'
-      end
+      product.tags = product.tags + ', lightingcloseouts__show'
     else
-      if product.tags.include? 'lightingcloseouts__show'
-        tags_gsub(product.tags, 'lightingcloseouts__show', 'lightingcloseouts__hide')
-      else
-        product.tags = product.tags + ', lightingcloseouts__hide'
-      end
+      tags_gsub(product.tags, 'lightingcloseouts__show', '')
     end
 
-    if params[:lights4less4u]
-      if product.tags.include? 'lights4less4u__hide'
-        tags_gsub(product.tags, 'lights4less4u__hide', 'lights4less4u__show')
-      else
-        product.tags = product.tags + ', lights4less4u__show'
-      end
+    if params[:lcfans]
+      product.tags = product.tags + ', lightingcloseouts__fans'
     else
-      if product.tags.include? 'lights4less4u__show'
-        tags_gsub(product.tags, 'lights4less4u__show', 'lights4less4u__hide')
-      else
-        product.tags = product.tags + ', lights4less4u__hide'
-      end
+      tags_gsub(product.tags, 'lightingcloseouts__fans', '')
+    end
+
+    if params[:lcres]
+      product.tags = product.tags + ', lightingcloseouts__res'
+    else
+      tags_gsub(product.tags, 'lightingcloseouts__res', '')
+    end
+
+    if params[:lccom]
+      product.tags = product.tags + ', lightingcloseouts__comm'
+    else
+      tags_gsub(product.tags, 'lightingcloseouts__comm', '')
+    end
+
+    if params[:lcparts]
+      product.tags = product.tags + ', lightingcloseouts__parts'
+    else
+      tags_gsub(product.tags, 'lightingcloseouts__parts', '')
+    end
+
+    if params[:lcbulbs]
+      product.tags = product.tags + ', lightingcloseouts__bulbs'
+    else
+      tags_gsub(product.tags, 'lightingcloseouts__bulbs', '')
+    end
+
+
+    if params[:lights4less4u]
+      product.tags = product.tags + ', lights4less4u__show'
+    else
+      tags_gsub(product.tags, 'lights4less4u__show', '')
     end
 
     if params[:qdl]
-      if product.tags.include? 'qdlhome__show'
-        tags_gsub(product.tags, 'qdlhome__show', 'qdlhome__hide')
-      else
-        product.tags = product.tags + ', qdlhome__hide'
-      end
+      product.tags = product.tags + ', qdlhome__hide'
     else
-      if product.tags.include? 'qdlhome__hide'
-        tags_gsub(product.tags, 'qdlhome__hide', 'qdlhome__show')
-      else
-        product.tags = product.tags + ', qdlhome__show'
-      end
+      tags_gsub(product.tags, 'qdlhome__hide', '')
     end
 
     product.save

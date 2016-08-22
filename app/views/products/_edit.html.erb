@@ -2,12 +2,23 @@
 <%= form_tag("/products/#{product.id}", controller: "products", method: "put") do %>
   <% if product.tags.include? 'lightingcloseouts__show' %>
       <% lc_var = true %><% else %><% lc_var = false %><% end %>
+  <% if product.tags.include? 'lightingcloseouts__fans' %>
+      <% lc_fans = true %><% else %><% lc_fans = false %><% end %>
+  <% if product.tags.include? 'lightingcloseouts__res' %>
+      <% lc_res = true %><% else %><% lc_res = false %><% end %>
+  <% if product.tags.include? 'lightingcloseouts__comm' %>
+      <% lc_com = true %><% else %><% lc_com = false %><% end %>
+  <% if product.tags.include? 'lightingcloseouts__parts' %>
+      <% lc_parts = true %><% else %><% lc_parts = false %><% end %>
+  <% if product.tags.include? 'lightingcloseouts__bulbs' %>
+      <% lc_bulbs = true %><% else %><% lc_bulbs = false %><% end %>
+
   <% if product.tags.include? 'lights4less4u__show' %>
       <% l4l4u_var = true %><% else %><% l4l4u_var = false %><% end %>
   <% if product.tags.include? 'qdlhome__hide' %>
       <% qdl_var = true %><% else %><% qdl_var = false %><% end %>
 
-  id: <%= product.id %> Lighting Closeouts <%= check_box_tag(:lightingcloseouts, 'yes', lc_var) %> Lights4Less4u <%= check_box_tag(:lights4less4u, 'yes', l4l4u_var) %> Hide on QDL <%= check_box_tag(:qdl, 'yes', qdl_var) %>
+  Lighting Closeouts <%= check_box_tag(:lightingcloseouts, 'yes', lc_var) %> (Ceiling Fans <%= check_box_tag(:lcfans, 'yes', lc_fans) %> Residential <%= check_box_tag(:lcres, 'yes', lc_res) %> Commercial <%= check_box_tag(:lccom, 'yes', lc_com) %> Parts <%= check_box_tag(:lcparts, 'yes', lc_parts) %> Bulbs <%= check_box_tag(:lcbulbs, 'yes', lc_bulbs) %>)<br> Lights4Less4u <%= check_box_tag(:lights4less4u, 'yes', l4l4u_var) %><br> Hide on QDL <%= check_box_tag(:qdl, 'yes', qdl_var) %><br>
   <%= submit_tag("Edit Display") %><br>
   <%= product.tags %>
 <% end %>
