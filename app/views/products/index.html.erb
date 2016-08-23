@@ -33,7 +33,7 @@
 <% else %>
 <ul>
   <% @products.each do |product| %>
-    <li><a href="#/" class="toggle-info" target="_top"><%= product.title %></a>
+    <li><a href="#/" class="toggle-info"><%= product.title %></a>
     <%= render 'edit', product: product %>
     </li>
   <% end %>
