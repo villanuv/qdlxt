@@ -23,10 +23,12 @@ class ProductsController < ShopifyApp::AuthenticatedController
     puts "Lights4Less4U: #{true_or_false(params[:lights4less4u])}"
     puts "Hide on QDL: #{true_or_false(params[:qdl])}"
 
-    if params[:lightingcloseouts]
-      product.tags = product.tags + ', lightingcloseouts__show'
-    else
-      tags_gsub(product.tags, 'lightingcloseouts__show', '')
+    # erase any instance of lightingcloseouts_price:<value> tag
+    product.tags.gsub!(/lightingcloseouts__price:\S+/, '')
+
+    if params[:lcprice] != ""
+      price = params[:lcprice].chomp
+      product.tags = product.tags + ", lightingcloseouts__price:#{price}"
     end
 
     if params[:lcfans]
@@ -88,7 +90,7 @@ class ProductsController < ShopifyApp::AuthenticatedController
   end
 
   def tags_gsub(tags, search_for, replace_with)
-    tags.gsub!(search_for, replace_with) if tags.split(", ").include? search_for
+    tags.gsub!(search_for, replace_with) if tags.include? search_for
     return tags
   end
 

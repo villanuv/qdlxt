@@ -1,7 +1,8 @@
-<div class="product-options">
+<div class="product-options rounded-corners">
 <%= form_tag("/products/#{product.id}", controller: "products", method: "put") do %>
-  <% if product.tags.include? 'lightingcloseouts__show' %>
-      <% lc_var = true %><% else %><% lc_var = false %><% end %>
+  <% if product.tags.include? 'lightingcloseouts__price' %>
+      <% lc_price = product.tags.match(/lightingcloseouts__price:\S+/)[0].gsub(',', '').split(":")[1] %><% else %><% lc_price = '' %>
+  <% end %>
   <% if product.tags.include? 'lightingcloseouts__fans' %>
       <% lc_fans = true %><% else %><% lc_fans = false %><% end %>
   <% if product.tags.include? 'lightingcloseouts__res' %>
@@ -13,13 +14,22 @@
   <% if product.tags.include? 'lightingcloseouts__bulbs' %>
       <% lc_bulbs = true %><% else %><% lc_bulbs = false %><% end %>
 
-  <% if product.tags.include? 'lights4less4u__show' %>
-      <% l4l4u_var = true %><% else %><% l4l4u_var = false %><% end %>
+  <%# if product.tags.include? 'lights4less4u__show' %>
+      <%# l4l4u_var = true %><%# else %><%# l4l4u_var = false %><%# end %>
   <% if product.tags.include? 'qdlhome__hide' %>
       <% qdl_var = true %><% else %><% qdl_var = false %><% end %>
 
-  Lighting Closeouts <%= check_box_tag(:lightingcloseouts, 'yes', lc_var) %> (Ceiling Fans <%= check_box_tag(:lcfans, 'yes', lc_fans) %> Residential <%= check_box_tag(:lcres, 'yes', lc_res) %> Commercial <%= check_box_tag(:lccom, 'yes', lc_com) %> Parts <%= check_box_tag(:lcparts, 'yes', lc_parts) %> Bulbs <%= check_box_tag(:lcbulbs, 'yes', lc_bulbs) %>)<br> Lights4Less4u <%= check_box_tag(:lights4less4u, 'yes', l4l4u_var) %><br> Hide on QDL <%= check_box_tag(:qdl, 'yes', qdl_var) %><br>
-  <%= submit_tag("Edit Display") %><br>
-  <%= product.tags %>
+  <h3>Lighting Closeouts</h3>
+  <p class="lc-collections">
+    <span class="lc-collection rounded-corners<% if lc_fans %> lc-selected<% end %>">Ceiling Fans <%= check_box_tag(:lcfans, 'yes', lc_fans) %></span> 
+    <span class="lc-collection rounded-corners<% if lc_res %> lc-selected<% end %>">Residential <%= check_box_tag(:lcres, 'yes', lc_res) %></span> 
+    <span class="lc-collection rounded-corners<% if lc_com %> lc-selected<% end %>">Commercial <%= check_box_tag(:lccom, 'yes', lc_com) %></span> 
+    <span class="lc-collection rounded-corners<% if lc_parts %> lc-selected<% end %>">Parts <%= check_box_tag(:lcparts, 'yes', lc_parts) %></span> 
+    <span class="lc-collection rounded-corners<% if lc_bulbs %> lc-selected<% end %>">Bulbs <%= check_box_tag(:lcbulbs, 'yes', lc_bulbs) %></span>
+  </p>
+  <p>Unit Price $<%= text_field_tag(:lcprice, lc_price, class: "price-field") %></p> <!-- Lights4Less4u <%#= check_box_tag(:lights4less4u, 'yes', l4l4u_var) %><br> --> 
+  <p><span class="qdl-hide">Hide on QDL</span> <%= check_box_tag(:qdl, 'yes', qdl_var, class: "qdl-hide") %></p>
+  <p><%= submit_tag "SAVE", class: "submit-button" %></p>
+  <%#= product.tags %>
 <% end %>
 </div>

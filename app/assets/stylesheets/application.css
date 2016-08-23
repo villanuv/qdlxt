@@ -14,8 +14,152 @@
  *= require_self
  */
 
+body {
+  font-family: Arial, sans-serif;
+}
+
+ul, ul li {
+  list-style-type: none;
+}
+
+.clear {
+  clear: both;
+}
+
+.toggle-info {
+  display: inline-block;
+  float: left;
+  clear: both;
+  margin-bottom: 5px;
+}
+
+.toggle-info:hover {
+  color: #ccc;
+}
+
+.expand-note {
+  display: block;
+  float: left;
+  margin-left: 5px;
+  color: #3366BB;
+}
+
 .product-options {
-  margin: 10px 0;
+  display: none;
+  margin: 20px 0 10px;
   padding: 10px;
-  border: 1px #ccc solid;
+  clear: both;
+  background-color: #f7f7f7;
+}
+
+.lc-collection {
+  font-size: 12px;
+  color: #ccc;
+  margin-right: 5px;
+  padding: 5px 10px;
+  border: 1px #eee solid;
+  background-color: #fff;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none; 
+}
+
+.lc-collections input {
+  display: none;
+}
+
+.lc-collection:hover {
+  color: #4eb748;
+  cursor: pointer;
+  background-color: #c2efbf;
+}
+
+.lc-selected:hover {
+  color: #fff;
+  cursor: pointer;
+  background-color: #48a542;
+}
+
+.lc-selected {
+  background-color: #4eb748;
+  border: 1px #4eb748 solid;
+  color: #fff;
+}
+
+.rounded-corners {
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  border-radius: 6px;
+}
+
+/*label {
+  margin-right: 5px;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+
+label:hover {
+  cursor: pointer;
+  border-bottom: 1px #ccc dotted;
+}*/
+
+.submit-button {
+  color: #fff;
+  border: none;
+  padding: 8px 15px;
+  background-color: #3a8435;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  border-radius: 6px;  
+}
+
+.submit-button:hover {
+  cursor: pointer;
+  color: #ff0;
+}
+
+.price-field {
+  font-size: 14px;
+  border: none;
+  padding: 5px;
+}
+
+.price-field:focus {
+  outline: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  color: #295499;
+}
+
+a:visited {
+  color: #3366BB;
+}
+
+.page-nav {
+  font-size: 24px;
+  clear: both;
+  width: 100%;
+  text-align: center;
+  margin: 0 auto;
+}
+
+.page-nav a {
+  display: inline-block;
+  color: #fff;
+  margin-top: 20px;
+  padding: 8px 15px;
+  background-color: #3a8435;
+  text-align: center;
+}
+
+.page-nav a:hover {
+  color: #ff0;
 }

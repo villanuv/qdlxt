@@ -7,23 +7,46 @@
       });
     });
 
+    $('document').ready(function(){
+      $('.toggle-info').click(function(){
+        $(this).parent().find('.product-options').slideToggle();
+      });
+
+      $('.lc-collection').click(function(){
+        $(this).toggleClass('lc-selected');
+        var checkbox = $(this).find(':checkbox');
+        if(checkbox.is(":checked") == true){
+          checkbox.prop('checked', false);
+        } else {
+          checkbox.prop('checked', true);
+        }
+      });
+    });
+
   </script>
 <% end %>
 
 <h2>Products</h2>
-
-<p>API KEY, FOR TESTING: <%= ShopifyApp.configuration.api_key %></p>
 
 <% if @products.count == 0 %>
 <p>There are no products on <strong>page <%= @page_num %></strong>. Try a lower number or return to the <a href="/">first page</a>.</p>
 <% else %>
 <ul>
   <% @products.each do |product| %>
-    <li>(<%= product.id %>) <a href="#" target="_top"><%= product.title %></a>
+    <li><a href="#/" class="toggle-info" target="_top"><%= product.title %></a>
     <%= render 'edit', product: product %>
     </li>
   <% end %>
 </ul>
 <% end %>
 
-<p style="font-size:24px;text-align:center;"><% if @page_num > 1 && @products.count != 0 %><a href="/<%= @page_num-1 %>"><</a><% end %><% if @products.count == 250 %> | <a href="/<%= @page_num+1 %>">></a><% end %></p>
+<div class="clear"></div>
+
+<div class="page-nav">
+  <% if @page_num > 1 && @products.count != 0 %>
+    <a href="/<%= @page_num-1 %>" class="rounded-corners"><</a>
+  <% end %>
+  <% if @products.count == 250 %>
+   &nbsp; <a href="/<%= @page_num+1 %>" class="rounded-corners">></a>
+  <% end %>
+</div>
